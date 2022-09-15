@@ -1,0 +1,8 @@
+{% load static %}
+
+<h3>List of Items to buy</h3>
+{% for item in buyObj %}
+<ol>
+    <li>{{ item.toBuy }}</li>
+</ol>
+{% endfor %}

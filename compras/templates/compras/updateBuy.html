@@ -1,0 +1,32 @@
+{% extends 'compras/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-12 mx-auto">
+    <h1 class="c">This is Our Home, Sweet Home</h1>
+</div>
+
+<div class="col-12 mx-auto mb-5">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-11 mx-auto font-1">
+            <div class="col-5 row mx-auto ">
+                <label>Arreglemos esto...?</label>
+                {{form.toBuy}}
+            </div>
+        </div>
+
+        <div class="col-lg-5 mx-auto mt-4 row mb-4">
+            <div class="col-lg-6 mt-4 mb-4 ">
+                <a class="col-8 btn btn-success" href="{% url 'homePage' %}">Cancel</a>
+            </div>
+            <div class="col-lg-6 mt-4 mb-4 ">
+                <input class="col-8 btn btn-success " type="submit" value="Update" />
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock content %}

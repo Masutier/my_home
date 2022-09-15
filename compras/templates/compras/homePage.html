@@ -1,0 +1,69 @@
+{% extends 'compras/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-12 mx-auto mt-3">
+    <h1 class="c">Es Nuestro Hogar, Dulce Hogar</h1>
+</div>
+
+<div class="col-12 mx-auto mb-5">
+    <div class="col-11 mx-auto">
+        <div class="row">
+            <div class="col-5 mx-auto c ">
+                <h2 class="mb-5">Lista de Tareas</h2>
+                {% if objToDo %}
+                    {% for item in objToDo %}
+                        <div class="col-12 mx-auto row mb-3 ">
+                            <div class="container col-7 ">
+                                <p>{{ item.toDo }}</p>
+                            </div>
+                            <div class="container col-2">
+                                <a href="{% url 'updateToDo' item.id %}" class="btn btn-info btn-sm">Modificar</a>
+                            </div>
+                            <div class="container col-2">
+                                <a href="{% url 'deleteToDo' item.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay Items</p>
+                {% endif %}
+            </div>
+
+            <div class="col-2 mx-auto c p-4">
+                <div class="row">
+                    <h4>Crear Tarea</h4>
+                    <a type="button" class="btn btn-outline-secondary"href="{% url 'createToDo'%}">Crear</a>
+                    <hr class="hr mt-3 mb-2">
+                    <h4>Crear Articulo</h4>
+                    <a type="button" class="btn btn-outline-info" href="{% url 'createBuy'%}">Crear</a>
+                    <a class="btn btn-success btn-sm mt-4" href="{% url 'closeBuy'%}">Cerrar la Lista de Compras</a>
+                </div>
+            </div>
+
+            <div class="col-5 mx-auto c">
+                <h2 class="mb-5">Lista de Compras</h2>
+                {% if objBuy %}
+                    {% for item in objBuy %}
+                        <div class="col-12 mx-auto row mb-3 ">
+                            <div class="container col-7">
+                                <p>{{ item.toBuy }}</p>
+                            </div>
+                            <div class="container col-2">
+                                <td><a href="{% url 'updateBuy' item.id %}" class="btn btn-info btn-sm">Modificar</a></td>
+                            </div>
+                            <div class="container col-2">
+                                <td><a href="{% url 'deleteBuy' item.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay Items</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

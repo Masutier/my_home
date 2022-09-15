@@ -1,0 +1,45 @@
+{% extends 'compras/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-12 mx-auto mb-5">
+    <h2 class="c">Es Nuestro Hogar, Dulce Hogar</h2>
+    <h4 class="c">Lista de Articulos Comprados</h4>
+</div>
+
+<div class="col-12 mx-auto mb-5">
+    <div class="col-9 mx-auto c">
+
+        {% if history %}
+        <table class="table table table-success table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Item</th>
+                    <th>Planeado</th>
+                    <th>Comprado</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in history %}
+                    <tr>
+                        <th>{{ item.id }}</th>
+                        <th>{{ item.toBuy }}</th>
+                        <td>{{ item.dateStart }}</td>
+                        <td>{{ item.dateEnd }}</td>
+                        <td>{{ item.status }}</td>
+                        <td><a href="{% url 'historyReactivate' item.id %}" class="btn btn-info btn-sm">Re Activar</a></td>
+                    </tr>
+                {% endfor %}
+            <tbody>
+        {% else %}
+            <p>No hay Items en la lista</p>
+        {% endif %}
+        </table>
+
+    </div>
+</div>
+
+{% endblock content %}
