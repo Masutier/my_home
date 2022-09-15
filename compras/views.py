@@ -18,9 +18,7 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 
-
 # HOME
-
 def homePage(request):
     objBuyAll = Buy.objects.all()
     objBuy = Buy.objects.filter(status='True')
@@ -32,7 +30,6 @@ def homePage(request):
 
 
 # TO DO
-
 def createToDo(request):
     if request.method == 'POST':
         form = CreateToDoForm(request.POST)
@@ -64,8 +61,8 @@ def deleteToDo(request, pk):
     objToDo.delete()
     return redirect('homePage')
 
-# BUY
 
+# BUY
 def createBuy(request):
     if request.method == 'POST':
         form = CreateBuyForm(request.POST)
@@ -166,10 +163,3 @@ def attach_file_to_mail(email_message, filename):
         f"attachment; filename = {filename}",
     )
     email_message.attach(file_attachment)
-
-
-def analisis(request):
-    objBuy = Buy.objects.all()
-    
-
-    return
